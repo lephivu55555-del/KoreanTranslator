@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ứng dụng thu âm tiếng Hàn và dịch realtime sang tiếng Việt">
+  <title>Korean → Vietnamese Translator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇰🇷</text></svg>">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <span class="header__icon">🎙</span>
+      <h1 class="header__title">Korean → Vietnamese</h1>
+      <p class="header__subtitle">Thu âm tiếng Hàn, dịch realtime sang tiếng Việt</p>
+      <div class="header__langs">
+        <span class="lang-badge lang-badge--ko">🇰🇷 한국어</span>
+        <span class="lang-arrow">→</span>
+        <span class="lang-badge lang-badge--vi">🇻🇳 Tiếng Việt</span>
+      </div>
+    </header>
+
+    <!-- Error Banner -->
+    <div class="error-banner" id="errorBanner">
+      <span>⚠️</span>
+      <span id="errorMessage"></span>
+      <button class="error-banner__close" id="errorClose">✕</button>
+    </div>
+
+    <!-- Record Button -->
+    <section class="record-section">
+      <button class="record-btn" id="recordBtn" aria-label="Thu âm">
+        <span id="recordIcon">🎙</span>
+      </button>
+      <div class="record-status" id="recordStatus">Nhấn để thu âm</div>
+      <div class="visualizer" id="visualizer"></div>
+    </section>
+
+    <!-- Korean Transcript -->
+    <div class="card">
+      <div class="card__header">
+        <div class="card__icon card__icon--ko">🇰🇷</div>
+        <div>
+          <div class="card__title">Tiếng Hàn</div>
+          <div class="card__subtitle">Transcript gốc</div>
+        </div>
+      </div>
+      <div class="transcript transcript--ko" id="koreanText">
+        <span class="placeholder">Nội dung tiếng Hàn sẽ hiển thị ở đây...</span>
+      </div>
+      <div class="actions">
+        <button class="btn-action" id="copyKoreanBtn">📋 Copy</button>
+      </div>
+    </div>
+
+    <!-- Vietnamese Translation -->
+    <div class="card">
+      <div class="card__header">
+        <div class="card__icon card__icon--vi">🇻🇳</div>
+        <div>
+          <div class="card__title">Tiếng Việt</div>
+          <div class="card__subtitle">Bản dịch tự động</div>
+        </div>
+      </div>
+      <div class="transcript transcript--vi" id="vietnameseText">
+        <span class="placeholder">Bản dịch sẽ hiển thị ở đây...</span>
+      </div>
+      <div class="actions">
+        <button class="btn-action" id="copyVietnameseBtn">📋 Copy</button>
+      </div>
+    </div>
+
+    <!-- History -->
+    <div class="card">
+      <div class="card__header">
+        <div class="card__icon card__icon--history">📝</div>
+        <div>
+          <div class="card__title">Lịch sử dịch</div>
+          <div class="card__subtitle">Các đoạn đã dịch trước đó</div>
+        </div>
+      </div>
+      <div class="history-list" id="historyList">
+        <div class="history-empty">Chưa có lịch sử dịch</div>
+      </div>
+      <div class="actions">
+        <button class="btn-action btn-action--danger" id="clearHistoryBtn">🗑 Xóa lịch sử</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      Sử dụng Web Speech API & MyMemory Translation · Mở bằng Google Chrome để có trải nghiệm tốt nhất
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
