@@ -1,7 +1,12 @@
 from flask import Flask, send_from_directory
 import os
+import mimetypes
 
-app = Flask(__name__, static_folder='static')
+# Ensure correct MIME types
+mimetypes.add_type('text/css', '.css')
+mimetypes.add_type('application/javascript', '.js')
+
+app = Flask(__name__, static_folder='static', static_url_path='/static')
 
 @app.route('/')
 def index():
